@@ -36,6 +36,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.pm.PackageInfo;
+import android.provider.Settings;
+
+import
 
 public class networkinterface
 extends CordovaPlugin {
@@ -109,12 +112,7 @@ extends CordovaPlugin {
        } catch (Exception e) {
            e.printStackTrace();
        }
-       Variables.main.runOnUiThread(new Runnable() {
-           public void run() {
-               Toast.makeText(Variables.main, jsons.toString(),
-                       Toast.LENGTH_SHORT).show();
-           }
-       });
+      
       
       
 		
