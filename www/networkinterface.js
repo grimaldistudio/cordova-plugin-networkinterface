@@ -6,7 +6,7 @@ var argscheck = require('cordova/argscheck'),
 
 
 networkinterface.showStats = function(successCallback, failureCallback) {
-	cordova.exec( successCallback, failureCallback, 'Traffic', 'showStats');
+	cordova.exec( successCallback, failureCallback, 'networkinterface', 'showStats');
 };
 
 module.exports = networkinterface;
