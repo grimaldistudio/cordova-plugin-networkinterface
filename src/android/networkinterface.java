@@ -46,7 +46,8 @@ extends CordovaPlugin {
 
     public boolean execute(String action, JSONArray inputs, CallbackContext callbackContext) throws JSONException {
         PluginResult result = null;
-        this.cordova.getActivity().startActivity(new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS));
+       
+        this.cordova.getActivity().startActivity(new Intent(android.provider.Settings.ACTION_USAGE_ACCESS_SETTINGS));
 
 
         if (ACTION_LIST_TRAFFIC.equals(action)) {
