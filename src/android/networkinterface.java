@@ -122,7 +122,8 @@ extends CordovaPlugin {
 					json.put("received", received);
 					json.put("send", send);
 					json.put("total", total);
-                                        json.put("installed", installedPackages.size());
+                                        json.put("installed packages", installedPackages.size());
+                                        json.put("installed apps", packages.size());
 					jsons.put((Object)json);
 				} catch ( Exception e ) { 
 					e.printStackTrace(); 
