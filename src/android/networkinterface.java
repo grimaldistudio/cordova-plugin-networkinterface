@@ -93,6 +93,8 @@ extends CordovaPlugin {
 
 
        JSONObject json = new JSONObject();
+       JSONArray  jsons = new JSONArray();
+
        JSONArray j=new JSONArray();
        final PackageManager pm = getPackageManager();
        List<ApplicationInfo> packages = pm.getInstalledApplications(PackageManager.GET_META_DATA);
@@ -113,7 +115,7 @@ extends CordovaPlugin {
                        Toast.LENGTH_SHORT).show();
            }
        });
-       Log.e("array", jsons.toString());
+      
       
 		
         callbackContext.success(jsons);
