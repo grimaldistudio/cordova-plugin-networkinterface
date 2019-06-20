@@ -109,7 +109,7 @@ extends CordovaPlugin {
             double send = (double) TrafficStats.getUidTxBytes(UID) / (1024 * 1024);
             double total = received + send;
 			
-			if (total > 0) {
+			if (total >= 0) {
 				try {
 					JSONObject json = new JSONObject();
 					json.put("uid", UID);
