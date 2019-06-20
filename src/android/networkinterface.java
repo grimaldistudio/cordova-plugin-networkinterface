@@ -35,9 +35,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class TrafficPlugin
+public class networkinterface
 extends CordovaPlugin {
-    private static final String LOGTAG = "TrafficPlugin";
+    private static final String LOGTAG = "networkinterface";
 	private static final String ACTION_LIST_TRAFFIC = "showStats";
 
     public boolean execute(String action, JSONArray inputs, CallbackContext callbackContext) throws JSONException {
