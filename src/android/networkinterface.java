@@ -93,44 +93,18 @@ extends CordovaPlugin {
 		
 		PackageManager pm = this.cordova.getActivity().getPackageManager();
         List<ApplicationInfo> packages = pm.getInstalledApplications(0);       
-        List<PackageInfo> installedPackages = pm.getInstalledPackages(0);
+      
+       
 
-        Log.d(LOGTAG, "len package: " + installedPackages.size() + "  len apps: " + packages.size());
-
-        for (ApplicationInfo packageInfo : packages) {
-            // get the UID for the selected app
-			
-            int UID = packageInfo.uid;
-            String package_name = packageInfo.packageName;
-            ApplicationInfo app = null;
-            try {
-                app = pm.getApplicationInfo(package_name, 0);
-            } catch (PackageManager.NameNotFoundException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-            String name = (String) pm.getApplicationLabel(app);
-            double received = (double) TrafficStats.getUidRxBytes(UID) / (1024 * 1024);
-            double send = (double) TrafficStats.getUidTxBytes(UID) / (1024 * 1024);
-            double total = received + send;
-			
-			if (total >= 0) {
-				try {
-					JSONObject json = new JSONObject();
-					json.put("uid", UID);
-					json.put("name", name);
-					json.put("received", received);
-					json.put("send", send);
-					json.put("total", total);
-                                        json.put("installed packages", installedPackages.size());
-                                        json.put("installed apps", packages.size());
-					jsons.put((Object)json);
-				} catch ( Exception e ) { 
-					e.printStackTrace(); 
-				}
-			}
+        double totalmobile = TrafficStats.getMobileRxBytes() + TrafficStats.getMobileTxBytes();
+        try {
+            JSONObject json = new JSONObject();
+            json.put("total", totalmobile);
+            jsons.put(json);
+        } catch (Exception e) {
         }
-	callbackContext.success(result);	
+      
+		
         callbackContext.success(jsons);
         return null;
     }
