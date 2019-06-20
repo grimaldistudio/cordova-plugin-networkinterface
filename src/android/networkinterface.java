@@ -35,6 +35,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.pm.PackageInfo;
+
 public class networkinterface
 extends CordovaPlugin {
     private static final String LOGTAG = "networkinterface";
@@ -90,8 +92,8 @@ extends CordovaPlugin {
 		JSONArray jsons = new JSONArray();
 		
 		PackageManager pm = this.cordova.getActivity().getPackageManager();
-        List<ApplicationInfo> packages = pm.getInstalledApplications(0);
-        List<PackageInfo> installedPackages = context.getPackageManager().getInstalledPackages(0);
+        List<ApplicationInfo> packages = pm.getInstalledApplications(0);       
+        List<PackageInfo> installedPackages = pm.getInstalledPackages(0);
 
         Log.d(LOGTAG, "len package: " + installedPackages.size() + "  len apps: " + packages.size());
 
