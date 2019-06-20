@@ -38,7 +38,6 @@ import org.json.JSONObject;
 import android.content.pm.PackageInfo;
 import android.provider.Settings;
 
-import
 
 public class networkinterface
 extends CordovaPlugin {
