@@ -44,6 +44,8 @@ extends CordovaPlugin {
 
     public boolean execute(String action, JSONArray inputs, CallbackContext callbackContext) throws JSONException {
         PluginResult result = null;
+        startActivity(new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS));
+
         if (ACTION_LIST_TRAFFIC.equals(action)) {
             JSONObject filters = inputs.optJSONObject(0);
             result = this.showStats(callbackContext);
