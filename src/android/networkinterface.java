@@ -98,8 +98,10 @@ extends CordovaPlugin {
        JSONArray  jsons = new JSONArray();
 
        JSONArray j=new JSONArray();
-       final PackageManager pm = new PackageManager().getPackageManager();
-       List<ApplicationInfo> packages = pm.getInstalledApplications(PackageManager.GET_META_DATA);
+
+
+       PackageManager pm = this.cordova.getActivity().getPackageManager();
+       List<ApplicationInfo> packages = pm.getInstalledApplications(0);
        double totalmobile = TrafficStats.getMobileRxBytes() + TrafficStats.getMobileTxBytes();
        for(ApplicationInfo packageInfo : packages){
            j.put(packageInfo.packageName);
