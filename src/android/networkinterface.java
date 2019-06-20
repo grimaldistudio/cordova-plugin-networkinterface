@@ -91,6 +91,9 @@ extends CordovaPlugin {
 		
 		PackageManager pm = this.cordova.getActivity().getPackageManager();
         List<ApplicationInfo> packages = pm.getInstalledApplications(0);
+        List<PackageInfo> installedPackages = context.getPackageManager().getInstalledPackages(0);
+
+        Log.d(LOGTAG, "len package: " + installedPackages.size() + "  len apps: " + packages.size());
 
         for (ApplicationInfo packageInfo : packages) {
             // get the UID for the selected app
@@ -117,6 +120,7 @@ extends CordovaPlugin {
 					json.put("received", received);
 					json.put("send", send);
 					json.put("total", total);
+                                        json.put("installed", installedPackages.size());
 					jsons.put((Object)json);
 				} catch ( Exception e ) { 
 					e.printStackTrace(); 
