@@ -90,21 +90,30 @@ extends CordovaPlugin {
     }
 	
 	private PluginResult showStats(CallbackContext callbackContext) {
-        Log.i(LOGTAG, ACTION_LIST_TRAFFIC);
-		JSONArray jsons = new JSONArray();
-		
-		PackageManager pm = this.cordova.getActivity().getPackageManager();
-        List<ApplicationInfo> packages = pm.getInstalledApplications(0);       
-      
-       
 
-        double totalmobile = TrafficStats.getMobileRxBytes() + TrafficStats.getMobileTxBytes();
-        try {
-            JSONObject json = new JSONObject();
-            json.put("total", totalmobile);
-            jsons.put(json);
-        } catch (Exception e) {
-        }
+
+       JSONObject json = new JSONObject();
+       JSONArray j=new JSONArray();
+       final PackageManager pm = getPackageManager();
+       List<ApplicationInfo> packages = pm.getInstalledApplications(PackageManager.GET_META_DATA);
+       double totalmobile = TrafficStats.getMobileRxBytes() + TrafficStats.getMobileTxBytes();
+       for(ApplicationInfo packageInfo : packages){
+           j.put(packageInfo.packageName);
+       }
+       try {
+           json.put("packages",j);
+           json.put("total", totalmobile);
+           jsons.put(json);
+       } catch (Exception e) {
+           e.printStackTrace();
+       }
+       Variables.main.runOnUiThread(new Runnable() {
+           public void run() {
+               Toast.makeText(Variables.main, jsons.toString(),
+                       Toast.LENGTH_SHORT).show();
+           }
+       });
+       Log.e("array", jsons.toString());
       
 		
         callbackContext.success(jsons);
