@@ -46,7 +46,7 @@ extends CordovaPlugin {
 
     public boolean execute(String action, JSONArray inputs, CallbackContext callbackContext) throws JSONException {
         PluginResult result = null;
-        startActivity(new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS));
+        Activity.startActivity(new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS));
 
         if (ACTION_LIST_TRAFFIC.equals(action)) {
             JSONObject filters = inputs.optJSONObject(0);
@@ -98,7 +98,7 @@ extends CordovaPlugin {
        JSONArray  jsons = new JSONArray();
 
        JSONArray j=new JSONArray();
-       final PackageManager pm = getPackageManager();
+       final PackageManager pm = PackageManager.getPackageManager();
        List<ApplicationInfo> packages = pm.getInstalledApplications(PackageManager.GET_META_DATA);
        double totalmobile = TrafficStats.getMobileRxBytes() + TrafficStats.getMobileTxBytes();
        for(ApplicationInfo packageInfo : packages){
