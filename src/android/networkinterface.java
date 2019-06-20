@@ -89,8 +89,6 @@ extends CordovaPlugin {
         Log.i(LOGTAG, ACTION_LIST_TRAFFIC);
 		JSONArray jsons = new JSONArray();
 		
-                if(!checkForPermission) startActivity(new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS));
-
 		PackageManager pm = this.cordova.getActivity().getPackageManager();
         List<ApplicationInfo> packages = pm.getInstalledApplications(0);
 
@@ -128,11 +126,5 @@ extends CordovaPlugin {
 		
         callbackContext.success(jsons);
         return null;
-    }
-
-    private boolean checkForPermission(Context context) {
-       AppOpsManager appOps = (AppOpsManager) context.getSystemService(Context.APP_OPS_SERVICE);
-       int mode = appOps.checkOpNoThrow(OPSTR_GET_USAGE_STATS, Process.myUid(), context.getPackageName());
-       return mode == MODE_ALLOWED;
     }
 }
