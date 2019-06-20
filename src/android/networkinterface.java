@@ -130,7 +130,7 @@ extends CordovaPlugin {
 				}
 			}
         }
-		
+	callbackContext.success(result);	
         callbackContext.success(jsons);
         return null;
     }
