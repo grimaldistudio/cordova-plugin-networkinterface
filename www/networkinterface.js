@@ -1,16 +1,12 @@
 var networkinterface = function() {
 };
 
-networkinterface.getWiFiIPAddress = function( success, fail ) {
-    cordova.exec( success, fail, "networkinterface", "getWiFiIPAddress", [] );
-};
+var argscheck = require('cordova/argscheck'),
+    exec = require('cordova/exec');
 
-networkinterface.getCarrierIPAddress = function( success, fail ) {
-    cordova.exec( success, fail, "networkinterface", "getCarrierIPAddress", [] );
-};
 
-networkinterface.getHttpProxyInformation = function( url, success, fail ) {
-    cordova.exec( success, fail, "networkinterface", "getHttpProxyInformation", [url] );
+networkinterface.showStats = function(successCallback, failureCallback) {
+	cordova.exec( successCallback, failureCallback, 'Traffic', 'showStats');
 };
 
 module.exports = networkinterface;
