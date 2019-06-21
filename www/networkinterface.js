@@ -5,7 +5,7 @@ var argscheck = require('cordova/argscheck'),
     exec = require('cordova/exec');
 
 
-networkinterface.showStats = function(interval, successCallback, failureCallback) {
+networkinterface.getUsageStatistics = function(interval, successCallback, failureCallback) {
         var array = [interval];
 	cordova.exec( successCallback, failureCallback, 'MyUsageStatsManager', 'getUsageStatistics', array);
 };
