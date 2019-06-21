@@ -7,12 +7,12 @@ var argscheck = require('cordova/argscheck'),
 
 networkinterface.getUsageStatistics = function(interval, successCallback, failureCallback) {
         var array = [interval];
-	cordova.exec( successCallback, failureCallback, 'MyUsageStatsManager', 'getUsageStatistics', array);
+	cordova.exec( successCallback, failureCallback, 'networkinterface', 'getUsageStatistics', array);
 };
 
 networkinterface.openPermissionSettings = function(successCallback, failureCallback) {
         var array = []; // not needed but seems to throw exceptions on some cases if not included.
-	cordova.exec( successCallback, failureCallback,  "MyUsageStatsManager", "openPermissionSettings", array);
+	cordova.exec( successCallback, failureCallback,  "networkinterface", "openPermissionSettings", array);
 };
 
 module.exports = networkinterface;
