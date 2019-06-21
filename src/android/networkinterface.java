@@ -34,6 +34,7 @@ import android.net.TrafficStats;
 public class networkinterface extends CordovaPlugin {
 
     private static final String LOG_TAG = "networkinterface";
+    private long mStartRX = 0;
 
     UsageStatsManager mUsageStatsManager;
 
@@ -146,7 +147,7 @@ public class networkinterface extends CordovaPlugin {
     public static JSONObject toJSON(UsageStats usageStats) throws Exception{
     
     StringBuilder stringBuilder = new StringBuilder();
-    long rxBytes = (TrafficStats.getTotalRxBytes()- 0)/1024/1024;
+    long rxBytes = (TrafficStats.getTotalRxBytes()- mStartRX)/1024/1024;
     stringBuilder.append(Long.toString(rxBytes));
 
         JSONObject object= new JSONObject();
