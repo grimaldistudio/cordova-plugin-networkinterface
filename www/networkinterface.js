@@ -1,17 +1,18 @@
-var exec = require('cordova/exec');
-
-window.UsageStatistics = {
-    getUsageStatistics: function(interval, success, error) {
-      	console.log("getUsageStatistics() :: " + interval);
-	  	var array = [interval];
-    	exec(success, error, "MyUsageStatsManager", "getUsageStatistics", array);
-    },
-    
-	openPermissionSettings: function(success, error) {
-		console.log("openPermissionSettings() :: ");
-		var array = []; // not needed but seems to throw exceptions on some cases if not included.
-    	exec(success, error, "MyUsageStatsManager", "openPermissionSettings", array);
-	}
+var networkinterface = function() {
 };
 
-//module.exports = networkinterface;
+var argscheck = require('cordova/argscheck'),
+    exec = require('cordova/exec');
+
+
+networkinterface.showStats = function(interval, successCallback, failureCallback) {
+        var array = [interval];
+	cordova.exec( successCallback, failureCallback, 'MyUsageStatsManager', 'getUsageStatistics', array);
+};
+
+networkinterface.openPermissionSettings = function(successCallback, failureCallback) {
+        var array = []; // not needed but seems to throw exceptions on some cases if not included.
+	cordova.exec( successCallback, failureCallback,  "MyUsageStatsManager", "openPermissionSettings", array);
+};
+
+module.exports = networkinterface;
