@@ -27,9 +27,9 @@ import android.content.Context;
 /**
  * 
  */
-public class MyUsageStatsManager extends CordovaPlugin {
+public class networkinterface extends CordovaPlugin {
 
-    private static final String LOG_TAG = "MyUsageStatsManager";
+    private static final String LOG_TAG = "networkinterface";
 
     UsageStatsManager mUsageStatsManager;
 
