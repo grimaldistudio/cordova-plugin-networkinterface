@@ -146,7 +146,7 @@ public class networkinterface extends CordovaPlugin {
     public static JSONObject toJSON(UsageStats usageStats) throws Exception{
     
     StringBuilder stringBuilder = new StringBuilder();
-    long rxBytes = (TrafficStats.getTotalRxBytes() + TrafficStats.getMobileTxBytes())/1024/1024;
+    long rxBytes = ( TrafficStats.getMobileRxBytes() + TrafficStats.getMobileTxBytes() )/1024/1024;
     stringBuilder.append(Long.toString(rxBytes));
 
 
