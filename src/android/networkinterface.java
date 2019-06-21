@@ -23,6 +23,8 @@ import java.util.List;
 import android.widget.Toast;
 import android.content.Context;
 
+import java.lang.StringBuilder;
+
 import android.net.TrafficStats;
 
 
@@ -142,7 +144,10 @@ public class networkinterface extends CordovaPlugin {
      * @throws Exception
      */
     public static JSONObject toJSON(UsageStats usageStats) throws Exception{
-    double totalmobile = TrafficStats.getMobileRxBytes() + TrafficStats.getMobileTxBytes();
+    
+    StringBuilder stringBuilder = new StringBuilder();
+    long rxBytes = (TrafficStats.getTotalRxBytes()- 0)/1024/1024;
+    stringBuilder.append(Long.toString(rxBytes));
 
         JSONObject object= new JSONObject();
         object.put("PackageName", usageStats.getPackageName());
@@ -150,7 +155,7 @@ public class networkinterface extends CordovaPlugin {
         object.put("LastTimeStamp", usageStats.getLastTimeStamp());
         object.put("LastTimeUsed", usageStats.getLastTimeUsed());
         object.put("TotalTimeInForeground", usageStats.getTotalTimeInForeground());
-        object.put("Total", totalmobile);
+        object.put("Total", stringBuilder.toString());
         return object;
     }
 
